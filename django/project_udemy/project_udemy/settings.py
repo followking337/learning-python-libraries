@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp',
-    'pages',
+    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -59,11 +59,12 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [
+            'context_processors': [  # objects that are available in all templates
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pages.context_processors.get_pages'  # register func from context_processors.py
             ],
         },
     },
