@@ -30,6 +30,10 @@ class RatingFilter(admin.SimpleListFilter):
 
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
+    # fields = ['name', 'rating']  # view fields in admin
+    # exclude = ['slug']  # exclude these fields from viewing in admin
+    # readonly_fields = ['year']  # field that cannot be changed in admin
+    prepopulated_fields = {'slug': ('name',)}
     list_display = ['name', 'rating', 'year', 'budget', 'currency', 'rating_status']
     # to view more other fields in admin
     # __str__ is not working after setting list_display
