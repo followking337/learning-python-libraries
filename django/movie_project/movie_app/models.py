@@ -6,6 +6,15 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 
+class Director(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    def __str__(self):  # this method definition doesn't have effect to DB structure, so it won't detect any changes
+        return f'{self.first_name} {self.last_name}'
+
+
 # from movie_app.models import Movie
 class Movie(models.Model):
     EUR = 'EUR'
