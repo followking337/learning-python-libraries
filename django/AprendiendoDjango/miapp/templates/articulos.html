@@ -17,7 +17,7 @@
         {% comment %} <ul> {% endcomment %}
             {% for articulo in articulos %}
                 {% comment %} <li> {% endcomment %}
-                <articel class='article-item'>
+                <article class='article-item'>
                     {% if articulo.image != 'null' and articulo.image.url|length >= 1 %}
                         <div class='image'>
                             <img src='{{articulo.image.url}}'/>
@@ -41,7 +41,7 @@
 
                     {% comment %} <br> {% endcomment %}
                     <div class='clearfix'></div>
-                </articel>
+                </article>
                 {% comment %} </li> {% endcomment %}
             {% endfor %}
         {% comment %} </ul> {% endcomment %}
