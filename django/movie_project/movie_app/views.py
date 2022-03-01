@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import F, Sum, Max, Min, Count, Avg, Value
-from .models import Movie, Director
+from .models import Movie, Director, Actor
 
 
 # Create your views here.
@@ -66,3 +66,19 @@ def director_ditail(request, index: int):
         'director': director
     }
     return render(request, 'movie_app/director_detail.html', data)
+
+
+def show_all_actors(request):
+    actors = Actor.objects.all()
+    data = {
+        'actors': actors
+    }
+    return render(request, 'movie_app/actors.html', data)
+
+
+def actor_ditail(request, index: int):
+    actor = Actor.objects.all()[index - 1]
+    data = {
+        'actor': actor
+    }
+    return render(request, 'movie_app/actor_detail.html', data)

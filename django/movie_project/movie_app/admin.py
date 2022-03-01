@@ -1,9 +1,10 @@
 from django.contrib import admin, messages
-from .models import Movie, Director
+from .models import Movie, Director, Actor
 from django.db.models import QuerySet
 
 # Register your models here.
 admin.site.register(Director)
+admin.site.register(Actor)
 
 
 class RatingFilter(admin.SimpleListFilter):
@@ -40,6 +41,8 @@ class MovieAdmin(admin.ModelAdmin):
     # __str__ is not working after setting list_display
     # first field is link to that one specific register, so it can´t be editable
     list_editable = ['rating', 'year', 'director', 'budget']  # make fields editable from admin
+    # filter_horizontal = ['actors']
+    filter_vertical = ['actors']
     ordering = ['-rating', 'name']  # rating_status can't be used here because is not attribute
     list_per_page = 3
     actions = ['set_dollars', 'set_euro']  # register of the method

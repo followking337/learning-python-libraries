@@ -9,4 +9,6 @@ urlpatterns = [
     path('movie/<slug:slug_movie>', views.show_one_movie, name='movie-detail'),
     path('director/', views.show_all_directors, name='directors-list'),
     path('director/<int:index>', views.director_ditail, name='director-detail'),
+    path('actor/', views.show_all_actors, name='actors-list'),
+    path('actor/<int:index>', views.actor_ditail, name='actor-detail'),
 ]
