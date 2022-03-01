@@ -35,11 +35,11 @@ class MovieAdmin(admin.ModelAdmin):
     # exclude = ['slug']  # exclude these fields from viewing in admin
     # readonly_fields = ['year']  # field that cannot be changed in admin
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ['name', 'rating', 'year', 'budget', 'currency', 'rating_status']
+    list_display = ['name', 'rating', 'year', 'budget', 'director', 'rating_status']
     # to view more other fields in admin
     # __str__ is not working after setting list_display
     # first field is link to that one specific register, so it can´t be editable
-    list_editable = ['rating', 'year', 'currency', 'budget']  # make fields editable from admin
+    list_editable = ['rating', 'year', 'director', 'budget']  # make fields editable from admin
     ordering = ['-rating', 'name']  # rating_status can't be used here because is not attribute
     list_per_page = 3
     actions = ['set_dollars', 'set_euro']  # register of the method

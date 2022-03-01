@@ -33,6 +33,9 @@ class Movie(models.Model):
     budget = models.IntegerField(default=1000000, validators=[MinValueValidator(0)])  # default value if not set
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=RUB)  # default is only for new register
     slug = models.SlugField(default='', null=False, db_index=True)  # db_index -> searching in DB is faster
+    # director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True)  # many to many, cannot delete
+    director = models.ForeignKey(Director, on_delete=models.CASCADE, null=True)  # many to many, will delete
+    # director = models.ForeignKey(Director, on_delete=models.SET_NULL, null=True)  # many to many, will set null
 
     # def save(self, *args, **kwargs):
     #     self.slug = slugify(self.name)

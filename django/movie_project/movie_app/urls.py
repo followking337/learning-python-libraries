@@ -7,4 +7,6 @@ urlpatterns = [
     path('worldrecords', views.get_guinness_world_records),
     # path('movie/<int:id_movie>', views.show_one_movie, name='movie-detail'),
     path('movie/<slug:slug_movie>', views.show_one_movie, name='movie-detail'),
+    path('director/', views.show_all_directors, name='directors-list'),
+    path('director/<int:index>', views.director_ditail, name='director-detail'),
 ]

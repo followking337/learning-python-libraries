@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import F, Sum, Max, Min, Count, Avg, Value
-from .models import Movie
+from .models import Movie, Director
 
 
 # Create your views here.
@@ -50,3 +50,19 @@ def get_guinness_world_records(request):
         'count_needle': 1790,
     }
     return render(request, 'movie_app/guinnessworldrecords.html', context=context)
+
+
+def show_all_directors(request):
+    directors = Director.objects.all()
+    data = {
+        'directors': directors
+    }
+    return render(request, 'movie_app/directors.html', data)
+
+
+def director_ditail(request, index: int):
+    director = Director.objects.all()[index - 1]
+    data = {
+        'director': director
+    }
+    return render(request, 'movie_app/director_detail.html', data)
