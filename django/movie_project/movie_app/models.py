@@ -52,7 +52,10 @@ class Movie(models.Model):
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=RUB)  # default is only for new register
     slug = models.SlugField(default='', null=False, db_index=True)  # db_index -> searching in DB is faster
     # director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True)  # one to many, cannot delete
-    director = models.ForeignKey(Director, on_delete=models.CASCADE, null=True)  # one to many, will delete
+    # director = models.ForeignKey(Director, on_delete=models.CASCADE, null=True)  # one to many, will delete
+    director = models.ForeignKey(Director, on_delete=models.CASCADE, null=True, related_name='movies')
+    # g = Director.objects.all()[1]
+    # g.movie_set.all()  --> field movie_set is creating automatically
     # director = models.ForeignKey(Director, on_delete=models.SET_NULL, null=True)  # one to many, will set null
     actors = models.ManyToManyField(Actor)  # many to many, will delete, this field cannot be at list_display and edita
 

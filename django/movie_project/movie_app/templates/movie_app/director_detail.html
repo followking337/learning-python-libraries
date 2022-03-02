@@ -7,4 +7,13 @@
     <h3>Name: {{ director.first_name }}</h3>
     <h3>Surname: {{ director.last_name }}</h3>
     <h3>Email: {{ director.email }}</h3>
+    <hr>
+    <h3>Movies List</h3>
+    <ul>
+        {% for movie in director.movies.all %}
+        <li>
+            {{ movie }}
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
