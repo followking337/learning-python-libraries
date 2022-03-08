@@ -7,7 +7,7 @@
     <ul>
         {% for movie in movies %}
         <li>
-<!--            Movie: <a href="{% url 'movie-detail' movie.id %}">{{ movie.name }}</a>.-->
+
             Movie: <a href="{{ movie.get_url }}">{{ movie.name }}</a>.
             Rating: {{ movie.rating }}.
             Budget: {{ movie.budget }}.

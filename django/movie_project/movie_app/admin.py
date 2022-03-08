@@ -1,10 +1,11 @@
 from django.contrib import admin, messages
-from .models import Movie, Director, Actor
+from .models import Movie, Director, Actor, DressingRoom
 from django.db.models import QuerySet
 
 # Register your models here.
 admin.site.register(Director)
 admin.site.register(Actor)
+# admin.site.register(DressingRoom)
 
 
 class RatingFilter(admin.SimpleListFilter):
@@ -28,6 +29,11 @@ class RatingFilter(admin.SimpleListFilter):
             return queryset.filter(rating__gte=60).filter(rating__lt=80)
         elif self.value() == '>=80':
             return queryset.filter(rating__gte=80)
+
+
+@admin.register(DressingRoom)
+class DressingRoomAdmin(admin.ModelAdmin):
+    list_display = ['floor', 'number', 'actor']
 
 
 @admin.register(Movie)
